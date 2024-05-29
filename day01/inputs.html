@@ -1,0 +1,67 @@
+<!--
+title : inputs.html
+date : 2024-05-29
+desc : 입력양식 태그
+-->
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>입력양식태그</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+</head>
+<body>
+    <h3>회원가입</h3>
+    <hr>
+    <form method="get"> <!--입력 양식 태그를 사용할 때는 반드시 <form>태그가 필요함!!!-->
+        <fieldset>
+            <legend>로그인</legend>
+            <input type="text" name="id"><br>
+            <input type="password" name="pass"><br>
+        </fieldset>
+        <input type="file" name="uploadFile"><br>
+        <input type="checkbox" name="male" value="남자">남자<input type="checkbox" name="female" value="여자">여자<br>
+        <input type="radio" name="fruit" value="apple">사과<input type="radio" name="fruit" value="lemon">레몬<br>
+        <input type="hidden" name="secretid" value="qwehrahshndr1243123kjasdf12"><!--화면 운용상 필요하지만 일반인들은 몰라도 되는 key 값들-->
+        <input type="image" src="https://via.placeholder.com/320x200"><br>
+        <input type="color" name="selColor"><br>
+        <input type="date" name="currdate"><br>
+        <input type="number" name="salary" value="3"><br>
+        <select name="snack" multiple="multiple"> <!--multiple="mutiple" 값을 여러개 선택-->
+            <option value="none">--선택--</option>
+            <optgroup label="기본"> <!--optgroup : 그룹핑-->
+                <option value="김밥">김밥</option>
+                <option value="떡볶이">떡볶이</option>
+                <option value="순대">순대</option>
+            </optgroup>
+            <optgroup label="옵션">
+                <option value="오뎅">오뎅</option>
+                <option value="고추튀김">고추튀김</option>
+            </optgroup>
+        </select><br>
+
+
+        <!-- 버튼 -->
+        <input type="button" value="일반버튼">
+        <input type="reset" value="초기화">
+        <input type="submit">
+    </form>
+
+    <!--공간 구성 태그-->
+    <div>DIV태그1</div>
+    <div>DIV태그2</div>
+    <div>DIV태그3</div>
+    <div>DIV태그4</div>
+    <div>DIV태그5</div>
+
+    <div>
+        <span>SPAN 태그 1</span>
+        <span>SPAN 태그 2</span>
+        <span>SPAN 태그 3</span>
+        <span>SPAN 태그 4</span>
+    </div>
+</body>
+</html>
