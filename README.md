@@ -32,6 +32,7 @@
     - Visual Studio Code에 플러그인 설치
         - HTML Code Snippet : Angular 8 and TypeScript/HTML VS Code Snippets
         - Live Server
+    - Tip! lorem + Tab => 긴 샘플 텍스트 생성
 
 - HTML5
     - XML(eXtensible Markup Lang)이 웨페이지를 구성하기 위한 선행기술, 너무 복잡해서 간략화 시킨 것
@@ -55,7 +56,7 @@
     - 기본 태그 : body에 사용
         - h1 ~ h6 : 제목(마크다운 #, ##와 동일)
         - p : 일반 문장
-        - div : 그룹화 구분자, 매우 중요(CSS 연계 디자인)
+        - div, span : 그룹화 구분자, 매우 중요(CSS 연계 디자인)
         - img : 이미지 표현
         - br : 한줄내리기(엔터)
         - hr : 가로선
@@ -107,7 +108,115 @@
 
 ## 2일차(24.05.30)
 - HTML5
-    - 시맨틱 태그
+    - 시맨틱 웹 : 시멘틱 태그로 화면 구조를 잡는 웹구성방식
+        - header, nav, footer, aside, section, article... 구조태그(화면에 안나타남) 사용
+        - 시맨틱 태그를 div로 바꿔도 똑같이 동작하기 떄문에 요새는 많이 사용하지 않음. 걷어내고 있는 추세
+
 - CSS3
-    - 웹 디자인 핵심
+    - 웹 디자인 핵심, Cascading Style Sheets
+    - 상단에서부터 <body>부터 하위에 태그들에 계속해서 적용되는 스타일
+    - 선택자에게 주어지는 디자인 속성
+    - 배경, 폰트 ...
+    - 레이아웃
+        - html만으로는 화면 레이아웃이 만들어지지 않음 css 사용 필수!
+        - 중앙정렬, 원트루, 고정바
+
+    - 선택자(Selector) : CSS에서 특정  HTML을 선택할 때 사용
+        - id 선택자 : 한번에 한개의 태그에만 사용가능
+        ```html
+        <style>
+            #header {
+                width: 600px;
+                /* auto : 정중앙에 위치함*/
+                margin: 0 auto;
+                background-color: chocolate;
+            }
+        </style>
+        ```
+
+        - 클래스 선택자 : 한번에 여러 태그에 사용가능 
+        ```html
+        <style>
+            .favorite{
+            color: coral;
+            }
+            .options{
+                background-color: black;
+            }
+        </style>
+        ```
+
+        - 속성 선택자 : input 같은 태그의 type에 따라 지정 가능
+        ```html
+        <style>
+            input[type="text"]{ background-color: yellow;}
+            input[type="password"]{ background-color: yellowgreen;}
+            input[type="submit"]{ background-color: darkblue; color:white;}
+        </style>
+        ```
+
+        - 후손 선택자 : 모든 아래 단계의 태그
+        ```html
+        <style>
+             #header #nav {color: darksalmon;}
+        </style>
+        ```
+
+        - 자손 선택자 : 바로 아래 단계의 태그만
+        ```html
+        <style>
+            #section > div { font-style: italic;}
+        </style>
+        ```
+
+        - 반응 선택자 
+        ```html
+        <style>
+            h1:hover {color:yellow;} /* 마우스를 올릴 경우 */
+            h1:active { color:black;} /* 클릭할 경우 */
+        </style>
+        ```
+
+        - 상태 선택자
+        ```html
+        <style>
+            input:disabled { background-color: gray;}
+        </style>
+        ```
+
+        - 구조선택자
+        ```html
+        <style>
+        .second-nav li:first-child{
+            border-radius: 10px 0 0 10px;
+        }
+        .second-nav li:last-child{
+            border-radius: 0 10px 10px 0;
+        }
+        .second-nav li:nth-child(2n+1){
+            background-color: #e9e784;
+        }        
+        .second-nav li:nth-child(2n){
+            background-color: #d86262;
+        }
+        </style>
+        ```
+
+    - 반응형 웹(Responsive Web)
+        - 웹 페이지 하나로도 데스크톱, 태블릿PC, 스마트폰에 맞게 디자인이 자동으로 반응해서 변경되는 웹 페이지
+        - 장점 : 개발 효율성, 유지 보수 용이
+        - 미디어 쿼리(medai query)를 사용해 개발
+        - 메타태그 viewport를 사용하면 그때부터 반응형 웹이 됨!!
+        ```html
+        <meta name='viewport' content='width=device-width, initial-scale=1'>
+        ```
+
+    - 속성(Property)
+        - 박스 속성
+            - margin 속성 : 테두리와 다른 태그 사이의 테두리 바깥쪽 여백
+            - border 속성 : 테두리
+            - padding 속성 : 테두리와 글자 사이의 테두리 안쪽 여백 
+            - width 속성 : 글자를 감싸는 영역의 가로 크기
+            - height 속성 : 글자를 감싸는 영역의 세로 크기
+
 - Javascript

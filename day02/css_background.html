@@ -1,0 +1,60 @@
+<!--
+title : css_background.html
+date : 2024-05-30
+desc : 배경 이미지
+-->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>BackgroundImage</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <style>
+        /* 배경이미지 */
+        body{
+            /* 이미지가 깨졌을 경우 대체하는 색상 */
+            /* background-color: #d3d3d3;  
+            background-image: url('./backtile.gif'); 
+            background-repeat: no-repeat;  */
+            /* 기본값 : repeat */
+            /* background-position: top;
+            background-attachment: fixed; */
+            
+            /*위의 내용을 한번에 입력*/
+            background:#d3d3d3 url('./backtile.gif') repeat top fixed
+        }
+        /* font-size: xx-small~xx-large, px, %, em... */
+        p {
+            font-size: 20px;
+            font-family: NaumGothic;
+            font-weight: bolder;
+            font-style: normal;
+            text-align: center;
+        }
+
+        a{
+            text-decoration: none;
+            font-size: 30px;
+            font-weight: bold;
+            color: rgb(71, 204, 71);
+        }
+        a:hover{
+            text-decoration: underline;
+        }
+        .test{
+            width: 300px; height: 150px;
+            background: #ff0000;
+            background: linear-gradient(90deg,#ff0000 0%, #00ff00 80%);
+            background: -webkit-linear-gradient(90deg,#ff0000 0%, #00ff00 80%);
+            background: -moz-linear-gradient(90deg,#ff0000 0%, #00ff00 80%);
+        }
+    </style>
+</head>
+<body>
+    <a href="https://www.naver.com">NAVER</a>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio, vero ducimus itaque laborum est voluptates eos doloribus dolore repellat, facere obcaecati deleniti ipsam assumenda temporibus tempora in distinctio quas iusto?</p>
+    <div class="test"></div>
+</body>
+</html>
