@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<!--
+title : js_practice.html
+date : 2024-05-31
+desc : JS 연습
+-->
+
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>JS연습</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <script>
+        // 변수선언
+        // ECMAScript6 이전에는 변수 선언이 var
+        // let이 기본, var는 지역변수 선언
+        let radius =10
+        const pi = 3.14159265;
+
+        // 출력
+        let  res = 2 * radius * pi;
+
+
+        // 콘솔출력(개발자 로그)
+        console.log(res);
+        if(res > 100){
+            console.log('원의 둘레는 100보다 큽니다')
+        }  
+        else{
+            console.log('원의 둘레가 100보다 작습니다.')
+        }
+
+        let date = new Date();
+        let year = date.getFullYear(); // 연도만 가져옴
+        let month = date.getMonth() + 1;   // 월만 가져옴
+        let day = date.getDate();   // 일 // getDay() : 월요일(1)~일요일(7)
+        let hour = date.getHours(); // 시
+        let minute = date.getMinutes(); // 분
+        let second = date.getSeconds(); // 초
+        console.log(date);
+        console.log(year + '년 ' + month + '월 ' + day + '일 ' + hour + '시 ' + minute + '분 ' + second + '초');
+
+        //if 문 끝!
+
+        // 배열변수 선언 == 파이썬과 동일
+        let array = [300.9, false, 'String', [1,2,3], { 'key':'value', 'option':true}, function(){alert('Hey!')}];
+        console.log(array);
+        console.log(array[1]);
+        console.log(array[2]);
+        console.log(array[3]);
+        console.log(array[4]);
+        console.log(array[5]);
+
+        // let i = 0;
+        // while(i < array.length)
+        // {
+        //     alert(array[i]);
+        //     i++
+        // }
+        for(var i = 0; i<array.length; i++)
+        {
+            console.log(i + '번 출력: ' + array[i]);
+        }
+        // 반목문 끝!
+
+        // 함수 시작!!
+        // 익명함수를 어려워하지 말 것. 함수명 위치만 바뀐 수준!!
+        // 익명함수 : fn1이 함수명 역할
+        let fn1 = function(){
+            console.log('함수 fn1을 실행!');
+            console.log('함수 종료!!')
+        }
+
+        console.log('fn1 타입 = ' + typeof(fn1))    // function
+        fn1();
+
+        function fn2() {
+            console.log('함수 fn2를 실행!')
+            console.log('함수 종료!!')
+        }
+
+        console.log('fn2 타입 = ' + typeof(fn2))    // function
+        fn2();
+
+        // 함수 우선순위(Advance Tip!)
+        // let은 두개가 중복이 안됨. var은 중복이 가능
+        var fn = function() { console.log('fn10'); }; // 실행 X
+        var fn = function() { console.log('fn20'); }; // 실행 O -> 동일한 종류의 함수면 제일 최신에 생성된 함수 적용 
+        fn();
+
+        var fm = function() { console.log('fm10');};  // 실행 O -> 익명함수 우선적용
+        function fm() { console.log('fm20'); };       // 실행 X
+        fm();
+
+        function ff(x){
+            return x*x;
+        }
+
+        console.log(ff(10));
+
+        // CallBack 함수(매개변수에 함수를 할당, 전달)
+        function callTenTimes(callback) {
+            for(var i = 0; i<10 ; i++)
+            {
+                callback();
+            }
+        }
+
+        var callFunc = function() {
+            console.log('콜백 후 호출');
+        }
+        callTenTimes(callFunc);
+        
+        // JavaScript 객체
+        let product = {
+            품명 : '7D 건조망고',
+            유형 : '당절임 건조과일',
+            성분 : '망고, 설탕, 메타중아황산나트륨,치자황색소',
+            가격 : 2000
+        };
+
+        // 배열처럼 사용할 수도, 클래스 속성처럼 사용할 수도 있음 
+        console.log(product['품명']);
+        console.log(product.가격);
+
+        for(var i in product)
+        {
+            console.log(i + ' => ' + product[i]);
+        }
+
+        // this == 파이썬의 셀프
+        let ironman = {
+            name : '토니 스타크',
+            proud : function(item){
+                console.log(this.name + '는 ' + item + '이 많습니다.');
+            }
+        };
+        ironman.proud('돈');
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

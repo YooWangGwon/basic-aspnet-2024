@@ -1,0 +1,46 @@
+<!--
+title : js06_event.html
+date : 2024-05-31
+desc : 이벤트
+-->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>JS 이벤트</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <script>
+        var buttonClick = function() {
+            console.log('버튼2 클릭!');
+            alert("버튼클릭2!");
+            }
+
+        window.onload = function(){
+            var btnNormal = document.getElementById('btnNormal');
+
+            btnNormal.onclick = function(event) {
+                console.log(event);
+                alert("버튼클릭3!\n그래도 가장 일반적인 이벤트");
+            }
+
+            var link = document.getElementById('link');
+            link.onclick = function(){
+                return true;   // false : 이벤트 제거
+                // 링크를 눌러도 네이버 창이 안뜸!
+            }
+        }
+
+    </script>
+</head>
+<body>
+    <!-- 인라인 이벤트 or 함수호출 => 쓰지말것-->
+    <!-- <button onclick="alert('Button1 Clicked')"> 클릭1 </button> -->
+    <button onclick=buttonClick()>Click2</button>
+
+    <!-- 고전적이나 그나마 쓰이는 것 -->
+    <button id="btnNormal">Click3</button>
+    <a id="link" href="https://www.naver.com" target="_blank">네이버로 가기</a>
+</body>
+</html>
