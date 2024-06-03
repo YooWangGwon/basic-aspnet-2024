@@ -187,16 +187,16 @@
         - 구조선택자
         ```html
         <style>
-        .second-nav li:first-child{
+        .second-nav li:first-child{     // 첫번째 자식만
             border-radius: 10px 0 0 10px;
         }
-        .second-nav li:last-child{
+        .second-nav li:last-child{      // 마지막 자식만
             border-radius: 0 10px 10px 0;
         }
-        .second-nav li:nth-child(2n+1){
+        .second-nav li:nth-child(2n+1){ // 홀수번째 자식만
             background-color: #e9e784;
         }        
-        .second-nav li:nth-child(2n){
+        .second-nav li:nth-child(2n){   // 짝수번째 자식만
             background-color: #d86262;
         }
         </style>
@@ -280,7 +280,7 @@
             - HTML 모든 요소를 제어 가능 (애니메이션, 게임, 통신...)
 
         - 기본 용어
-            - 요소 노드 : <h1> 태그와 <script> 태그처럼 요소를 생성하는 노드
+            - 요소 노드 : "<h1> 처럼 요소를 생성하는 노드
             - 텍스트 노드 : 화면에 출력되는 문자열
             - 정적 생성 : 웹 페이지를 처음 실행할 때 HTML 태그로 적힌 문서 객체를 생성하는 것
             - 동적 생성 : 웹 페이지를 실행중에 자바스크립트를 사용해 문서 객체를 사용하는 것
@@ -315,4 +315,67 @@
 
 ## 4일차(24.06.03)
 - HTML + CSS + js(Query) 응용
-    -
+    - jQuery 응용
+        - javascript와 jQuery를 혼용해도 상관없음
+        - jQuery로 코딩이 편할 때와 javascript가 편할 때도 있음
+
+    - Bootstrap
+        - https://getbootstrap.com/
+        - https://inpa.tistory.com/entry/BOOTSTRAP-%F0%9F%93%9A-%EB%B6%80%ED%8A%B8%EC%8A%A4%ED%8A%B8%EB%9E%A9-v5-%EB%93%80%ED%86%A0%EB%A6%AC%EC%96%BC
+        - 오픈소스 CSS 프레임워크
+        - 트위터 블루프린트 -> 부트스트랩
+        - 현재 전세계에서 가장 각광받는 프레임워크 중 하나
+        - CSS를 동작시키기 위해서는 Javascript도 포함
+        - 소스 다운받아서 사용 or CDN으로 링크만 사용(2) => 2번이 훨씬 편리
+            - 제한된 네트워크 환경에서는 1번
+            - 인터넷에 항상 연결된 환경에서는 2번이 편리
+
+        ```html
+        <!-- <head>에 붙여넣기 -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" 
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+        <!-- <body>에 붙여넣기 -->
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" 
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" 
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+        ```
+
+        - 핵심!
+            - BootStrap은 화면 사이즈를 12등분함(그 이상은 불가능!)
+            - container 및에 마치 table처럼 div를 구분해서 사용
+            - container > row > col div 태그 클래스 정의
+            
+        ```html
+            <div class="container text-center">
+                <div class="row">
+                    <div class="col cgrid">
+                        Grid1
+                    </div>
+                    <div class="col cgrid">
+                        Grid2
+                    </div>
+                    <div class="col cgrid">
+                        Grid3
+                    </div>
+                </div>
+            </div>
+        ```
+
+        - 부트스트랩 학습에 시간을 들이는게 아님. Copyleft가 정석!
+            - https://getbootstrap.com/docs/5.3/getting-started/introduction/ 참조
+            - https://getbootstrap.com/docs/5.3/examples/ Snippets 활용을 추천
+
+        - 무료 테마(템플릿)가 아주 잘되어 있음
+            - https://startbootstrap.com/
+
+    - 웹페이지 클로닝
+        - Pinterest 타입 웬페이지 만들기(현재 진행중)
+            - Masonry layout
+                - Pinterest 타입의 이미지 정렬 레이아웃
+                - https://unpkg.com/masonry-layout@4.2.2/dist/masonry.pkgd.min.js
+            - imageLoaded
+                - Masonry Layout을 적용하기 위해 필요한 라이브러리
+                - https://unpkg.com/imagesloaded@5/imagesloaded.pkgd.min.js
+
+## 5일차(24.06.04)
