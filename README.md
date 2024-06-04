@@ -384,5 +384,6 @@
         - 핀터레스트 타입 + 부트스트랩 웹페이지 만들기
             - 부트스트랩 아이콘 적용을 위해 필요한 CDN : <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"  >
 
-    ![화면 예시](https://raw.githubusercontent.com/YooWangGwon/basic-aspnet-2024/main/images/asp001.png)
-    
+        https://github.com/YooWangGwon/basic-aspnet-2024/assets/158007390/089eda4a-10d4-49ce-bd72-110546cb484a
+
+
