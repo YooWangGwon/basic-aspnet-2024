@@ -383,7 +383,7 @@
     - 웹페이지 클로닝
         - 핀터레스트 타입 + 부트스트랩 웹페이지 만들기
             - 부트스트랩 아이콘 적용을 위해 필요한 CDN
-            
+
             ```html
             <head>
                 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
@@ -392,22 +392,23 @@
 
         https://github.com/YooWangGwon/basic-aspnet-2024/assets/158007390/089eda4a-10d4-49ce-bd72-110546cb484a
 
-    - Codehel 유튜버 로그인 웹페이지 듀토리얼 따라하기
-        - Google Fonts 중 Ubuntu 폰트 활용
+        - Codehel 유튜버 로그인 웹페이지 듀토리얼 따라하기
+            - Google Fonts 중 Ubuntu 폰트 활용
 
-        ```html
-        <style>
-            @import url("https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"); 
-        </style>
-        ```
+            ```html
+            <style>
+                @import url("https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"); 
+            </style>
+            ```
 
-        - Boxicons 사용
-        ```html
-        <head>
-            <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-        </head>
-        ```
+            - Boxicons 사용
+            ```html
+            <head>
+                <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+            </head>
+            ```
 
 
-    <img src="https://raw.githubusercontent.com/YooWangGwon/basic-aspnet-2024/main/images/asp002.png" width="730" alt="Codehal 로그인창 따라하기">
+        <img src="https://raw.githubusercontent.com/YooWangGwon/basic-aspnet-2024/main/images/asp002.png" width="730" alt="Codehal 로그인창 따라하기">
 
+        - Codehal 유튜버 슬라이더 애니메이트 클로닝
