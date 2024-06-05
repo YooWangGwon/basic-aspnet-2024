@@ -422,4 +422,8 @@
          
             https://github.com/YooWangGwon/basic-aspnet-2024/assets/158007390/580e6ea7-7701-4b09-b3fa-3050af1799c8
 
+    - 개인 웹페이지 클로닝
+        - Codehal Login&Register Page 듀토리얼 따라하기(완료)
+            - 배경화면 : Image by pikisuperstar on Freepik
+            - 실행화면
 
