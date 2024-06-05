@@ -411,4 +411,11 @@
 
         <img src="https://raw.githubusercontent.com/YooWangGwon/basic-aspnet-2024/main/images/asp002.png" width="730" alt="Codehal 로그인창 따라하기">
 
-        - Codehal 유튜버 슬라이더 애니메이트 클로닝
+        - Codehal 유튜버 슬라이더 애니메이션 웹페이지 듀토리얼 따라하기(진행중)
+
+## 6일차(24.06.05)
+- HTML + CSS + js(jQuery) 응용
+    - 웹페이지 클로닝
+        - Codehal 유튜버 슬라이더 애니메이션 웹페이지 듀토리얼 따라하기(완료)
+
+            - 작동화면
