@@ -419,3 +419,7 @@
         - Codehal 유튜버 슬라이더 애니메이션 웹페이지 듀토리얼 따라하기(완료)
 
             - 작동화면
+         
+            https://github.com/YooWangGwon/basic-aspnet-2024/assets/158007390/580e6ea7-7701-4b09-b3fa-3050af1799c8
+
+
