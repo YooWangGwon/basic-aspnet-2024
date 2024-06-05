@@ -426,10 +426,13 @@
     - 개인 웹페이지 클로닝
         - Codehal Login&Register Page 듀토리얼 따라하기(완료)
             - 배경화면 : Image by pikisuperstar on Freepik
+            - css, javascript 분할
             - 실행화면
 
       
             https://github.com/YooWangGwon/basic-aspnet-2024/assets/158007390/54509945-1e31-4528-92a5-15fac9454df4
 
 
+        - Parallax Webpage 듀토리얼 따라하기(완료)
 
+        - ContactForm 듀토리얼 따라하기(진행중)
