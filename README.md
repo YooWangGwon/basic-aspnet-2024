@@ -434,5 +434,17 @@
 
 
         - Parallax Webpage 듀토리얼 따라하기(완료)
+            - 실행화면
 
         - ContactForm 듀토리얼 따라하기(진행중)
+
+## 7일차(24.06.07)
+- HTML + CSS + js(jQuery) 응용
+    - 개인 웹페이지 클로닝
+        - True Coder ContactForm 듀토리얼 따라하기(완료)
+            - 실행화면
+
+        - True Coder 3d Parallax Website 
+            - GSAP : https://gsap.com/docs/v3/Installation?tab=cdn&module=esm&method=private+registry&tier=free&club=false&require=false&trial=true
+            - 실행화면
+        

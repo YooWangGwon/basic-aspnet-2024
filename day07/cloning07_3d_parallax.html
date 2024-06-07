@@ -1,0 +1,88 @@
+<!--
+    title : cloning07_3d_parallax.html
+    date : 2024-06-07
+    desc : True Coder 클로닝 3d Parallax effect
+-->
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>3d Parallax Tutorial</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <script src="https://kit.fontawesome.com/aea8a188e8.js" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.10.4/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/EasePack.min.js"></script>
+
+
+    <link rel="stylesheet" href="./css/cloning07.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <img src="./images/logo.png" alt="Travelo" class="logo">
+            <ul>
+                <li>
+                    <a href="#">Login</a>
+                </li>
+                <li>
+                    <a href="#">Sign up</a>
+                </li>
+                <li class="search">
+                    <a href="#">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </a>
+                </li>
+                <li class="hamburger">
+                    <a href="#">
+                        <div class="bar">
+
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <div class="vignette"></div>
+        <img src="./images/background.png" data-speedx="0.3" data-speedy="0.38" data-speedz="0" data-rotation="0" data-distance="-200"
+        class="parallax bg_img">
+        <img src="./images/fog_7.png" data-speedx="0.27" data-speedy="0.32" data-speedz="0" data-rotation="0" data-distance="850"
+        class="parallax fog_7">
+        <img src="./images/mountain_10.png" data-speedx="0.195"  data-speedy="0.305" data-speedz="0" data-rotation="0" data-distance="1100"
+        class="parallax mountain_10">
+        <img src="./images/fog_6.png" data-speedx="0.25" data-speedy="0.28" data-speedz="0" data-rotation="0" data-distance="1400"
+        class="parallax fog_6">
+        <img src="./images/mountain_9.png" data-speedx="0.125" data-speedy="0.155" data-speedz="0.15" data-rotation="0.02" data-distance="1700"
+        class="parallax mountain_9">
+        <img src="./images/mountain_8.png" data-speedx="0.1" data-speedy="0.11" data-speedz="0" data-rotation="0.02" data-distance="1800"
+        class="parallax mountain_8">
+        <img src="./images/fog_5.png" data-speedx="0.16" data-speedy="0.105" data-speedz="0" data-rotation="0" data-distance="1900"
+        class="parallax fog_5">
+        <img src="./images/mountain_7.png" data-speedx="0.1" data-speedy="0.1" data-speedz="0" data-rotation="0.09" data-distance="2000"
+        class="parallax mountain_7">
+        <div class="text parallax" data-speedx="0.07" data-speedy="0.07" data-speedz="0" data-rotation="0.11" data-distance="0">
+            <h2>China</h2>
+            <h1>Zhangjiajie</h1>
+        </div>
+        <img src="./images/mountain_6.png" data-speedx="0.065" data-speedy="0.05" data-speedz="0.05" data-rotation="0.12" data-distance="2300" class="parallax mountain_6">
+        <img src="./images/fog_4.png" data-speedx="0.135" data-speedy="0.012" data-speedz="0" data-rotation="0" data-distance="2400" class="parallax fog_4">
+        <img src="./images/mountain_5.png" data-speedx="0.08" data-speedy="0.04" data-speedz="0.13" data-rotation="0.1" data-distance="2550" class="parallax mountain_5">
+        <img src="./images/fog_3.png" data-speedx="0.11" data-speedy="0.018" data-speedz="0" data-rotation="0" data-distance="2800" class="parallax fog_3">
+        <img src="./images/mountain_4.png" data-speedx="0.059" data-speedy="0.024" data-speedz="0.35" data-rotation="0" data-distance="3200" class="parallax mountain_4">
+        <img src="./images/mountain_3.png" data-speedx="0.04" data-speedy="0.018" data-speedz="0.32" data-rotation="0.05" data-distance="3400" class="parallax mountain_3">
+        <img src="./images/fog_2.png" data-speedx="0.15" data-speedy="0.0115" data-speedz="0" data-rotation="0" data-distance="3600" class="parallax fog_2">
+        <img src="./images/mountain_2.png" data-speedx="0.0235" data-speedy="0.013" data-speedz="0.42" data-rotation="0.15" data-distance="3800" class="parallax mountain_2">
+        <img src="./images/mountain_1.png" data-speedx="0.027" data-speedy="0.018" data-speedz="0.53" data-rotation="0.2" data-distance="4000" class="parallax mountain_1">
+        <img src="./images/sun_rays.png" class="sun_rays hide">
+        <img src="./images/black_shadow.png" class="black_shadow hide">
+        <img src="./images/fog_1.png" data-speedx="0.12" data-speedy="0.01" data-speedz="0" data-rotation="0" data-distance="4200" class="parallax fog_1">
+    </main>
+
+    <script src='./js/cloning07.js'></script>
+</body>
+</html>

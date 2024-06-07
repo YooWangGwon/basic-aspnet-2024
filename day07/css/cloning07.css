@@ -1,0 +1,318 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+*,
+*::before,
+*::after {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Poppins", sans-serif;
+}
+
+::selection{
+    background-color: #0b372dbb;
+}
+
+.logo {
+    width: 100px;
+}
+
+header {
+    position: absolute;
+    z-index: 9999;
+    width: 100%;
+    padding: 0.9rem 0;
+    top:0;
+    left: 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+header nav {
+    /* background-color: red; */
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header ul {
+    display: flex;
+    list-style: none;
+    align-items : center
+}
+
+header ul a {
+    text-decoration: none;
+    color: #fff;
+    padding: 0 1.5rem;
+    text-decoration: uppercase;
+    font-weight: 300;
+    font-size: 0.83rem;
+}
+
+.search a{
+    font-size: 1.05rem;
+    padding: 0 3rem;
+}
+
+.hamburger {
+    padding-left: 1.5rem;
+}
+
+.hamburger a{
+    padding: 0;
+    width: 37px;
+    height: 37px;
+    display: flex;
+    border-radius: 50%;
+    background-color: rgba(115, 115, 115, 0.7);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    justify-content: center;
+    align-items: center;
+}
+
+.hamburger .bar {
+    position: relative;
+    width: 52%;
+    height: 1.3px;
+    background-color: #fff;
+    border-radius: 2px;
+}
+
+.hamburger .bar::before,
+.hamburger .bar::after {
+    content: "";
+    position: absolute; /* 위의 .hamburger .bar 의 위치에 따름 */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60%;
+    height: 100%;
+    background-color: inherit;  /* .hamburger .bar의 색상을 상속받음 */
+    border-radius: 2px;
+}
+
+.hamburger .bar::before {
+    top: -4.5px
+}
+
+.hamburger .bar::after {
+    top: 4.5px
+}
+
+main {
+    position: relative;
+    height: 100vh; /* Window의 창의 높이와 같이 */
+    width: 100vw;
+    overflow: hidden;
+}
+
+.parallax{
+    pointer-events: none;
+    transition: 0.45s cubic-bezier(.2, .49, .32, .00);
+}
+
+.bg_img {
+    position: absolute;
+    width: 2800px;
+    top: calc(50% - 390px);
+    left: calc(50% + 10px);
+    z-index: 1;
+}
+
+.fog_7 {
+    position: absolute;
+    z-index: 2;
+    width: 1900px;
+    top: calc(50% - 100px);
+    left: calc(50% + 300px);
+}
+
+.mountain_10 {
+    position: absolute;
+    z-index: 3;
+    width: 870px;
+    top: calc(50% + 69px);
+    left: calc(50% + 230px);
+}
+
+.fog_6 {
+    position: absolute;
+    z-index: 4;
+    width: 1833px;
+    top: calc(50% + 95px);
+    left: calc(50% + 7px);
+}
+
+.mountain_9 {
+    position: absolute;
+    z-index: 5;
+    width: 463px;
+    top: calc(50% + 119px);
+    left: calc(50% - 457px);
+}
+
+.mountain_8 {
+    position: absolute;
+    z-index: 6;
+    width: 786px;
+    top: calc(50% + 96px);
+    left: calc(50% - 202px);
+}
+
+.fog_5 {
+    position: absolute;
+    z-index: 7;
+    width: 449px;
+    top: calc(50% + 171px);
+    left: calc(50% + 29px);
+}
+
+.mountain_7 {
+    position: absolute;
+    z-index: 8;
+    width: 515px;
+    top: calc(50% + 134px);
+    left: calc(50% + 305px);
+}
+
+.text {
+    position: absolute;
+    z-index: 9;
+    top: calc(50% - 130px);
+    left: 50%;
+    text-align: center;
+    text-transform: uppercase;
+    pointer-events: auto;
+    color: #fff;
+}
+
+.text h2{
+    font-weight: 100;
+    font-size: 6.5rem;
+    line-height: 0.88;
+
+}
+
+.text h1{
+    font-weight: 8000;
+    font-size: 8rem;
+    line-height: 0.88;
+}
+
+.mountain_6 {
+    position: absolute;
+    z-index: 10;
+    width: 383.5px;
+    top: calc(50% + 86.5px);
+    left: calc(50% + 590px);
+
+}
+
+.fog_4 {
+    position: absolute;
+    z-index: 11;
+    width: 543px;
+    top: calc(50% + 242px);
+    left: calc(50% -64px);
+}
+
+
+.mountain_5 {
+    position: absolute;
+    z-index: 12;
+    width: 583px;
+    top: calc(50% + 269px);
+    left: calc(50% + 130px);
+}
+
+.fog_3 {
+    position: absolute;
+    z-index: 13;
+    width: 1435px;
+    top: calc(50% + 110px);
+    left: calc(50% - 15px);
+}
+
+.mountain_4 {
+    position: absolute;
+    z-index: 14;
+    width: 717px;
+    top: calc(50% + 221px);
+    left: calc(50% - 381.5px);
+}
+
+.mountain_3 {
+    position: absolute;
+    z-index: 15;
+    width: 419px;
+    top: calc(50% + 133px);
+    left: calc(50% + 736px);
+}
+
+.fog_2 {
+    position: absolute;
+    z-index: 16;
+    width: 1418px;
+    top: calc(50% + 177px);
+    left: calc(50% - 30px);
+}
+
+.mountain_2 {
+    position: absolute;
+    z-index: 17;
+    width: 625px;
+    top: calc(50% + 188px);
+    left: calc(50% + 412px);
+}
+
+.mountain_1 {
+    position: absolute;
+    z-index: 18;
+    width: 450px;
+    top: calc(50% + 91.5px);
+    left: calc(50% - 601px);
+}
+
+.sun_rays {
+    position: absolute;
+    z-index: 19;
+    top: 0;
+    right: 0;
+    width: 595px;
+}
+
+.black_shadow {
+    position: absolute;
+    z-index: 20;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+}
+
+.fog_1 {
+    position: absolute;
+    z-index: 21;
+    width: 1600px;
+    top: calc(100% - 355px);
+    left: calc(50% - 30px);
+}
+
+.vignette{
+    position: absolute;
+    z-index: 100;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: radial-gradient(
+        ellipse at center,
+        rgba(0,0,0,0) 65%, 
+        rgba(0,0,0,0.7));
+    pointer-events: none;
+}
