@@ -1,0 +1,48 @@
+﻿@model IEnumerable<BasicDBHandling.Models.Category>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Category</h1>
+
+<p>
+    <a asp-action="Create">신규 추가</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DisplayOrder)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PostDate)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DisplayOrder)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PostDate)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">수정</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">자세히</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">삭제</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

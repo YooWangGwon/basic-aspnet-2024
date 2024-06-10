@@ -503,3 +503,41 @@
         - Action == HTML 에서 form 태그 내 submit 버튼 클릭! / 링크를 클릭하는 것, 윈앱에서 이벤트와 동일
         - 액션이 발생한 이후 처리하는 메서드의 결과를 ActionResult
         - 콘솔 서버로그 잘 확인할 것, 프로세스가 종료되면 웹사이트가 실행안됨
+
+    - 데이터베이스 연동방법
+        - DB first : 가장 전통적인 DB 연동방식. DB 설계, DB 구축, C#과 연동
+        - Code first : 가장 트랜드가 되는 DB 연동방식. C# 클래스 작성. DB 연결 설정 후 실행하면 DB에 테이블이 생성....
+        - EntityFramework를 사용하면 아주 손쉽게 구축가능. DB를 잘 모르고 C#, ASP.NET만 알아도 DB 핸들링 가능
+
+    - EntityFramework(Core)
+        - Microsoft.EntityFrameworkCore
+        - Microsoft.EntityFrameworkCore.Tools
+        - Microsoft.EntityFrameworkCore.SqlServer
+
+    - Code first 구현순서
+        1. ASP.NET 프로젝트 생성
+        2. EF 패키지 3개 설치
+        3. 엔티티 클래스 작성
+        4. appsettings.json에 DB 연결 문자열 추가
+        5. Data/ApplicationDbContext.cs 중간연결 클래스 생성
+        6. Program.cs Services 내에 DbContext 종석성을 주입
+        7. Nuget 패키지 관리자 > 패키지 관리자 콘솔 실행
+            ```shell
+            PM> add-migration '마이그레이션 명'
+            Build started...
+            Build succeeded.
+            ...
+            PM> update-database
+            ...
+            Done
+            ```
+        8. Controllers 폴더에 컨트롤러 추가
+        <img src="https://raw.githubusercontent.com/YooWangGwon/basic-aspnet-2024/main/images/asp008.png" width="600">
+        9. 실행(Ctrl+F5)
+
+## 9일차(24.07.22)
+- ASP.NET Core MVC
+    - 필요 이론
+    - 연습
+    - 개인 포트폴리오 웹사이트
+    - BootStrap 테마 적용
