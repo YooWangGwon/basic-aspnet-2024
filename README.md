@@ -419,7 +419,6 @@
         - Codehal 유튜버 슬라이더 애니메이션 웹페이지 듀토리얼 따라하기(완료)
 
             - 작동화면
- 
       
             https://github.com/YooWangGwon/basic-aspnet-2024/assets/158007390/580e6ea7-7701-4b09-b3fa-3050af1799c8
 
@@ -428,10 +427,8 @@
             - 배경화면 : Image by pikisuperstar on Freepik
             - css, javascript 분할
             - 실행화면
-
       
             https://github.com/YooWangGwon/basic-aspnet-2024/assets/158007390/54509945-1e31-4528-92a5-15fac9454df4
-
 
         - Parallax Webpage 듀토리얼 따라하기(완료)
             - 실행화면
@@ -443,6 +440,10 @@
     - 개인 웹페이지 클로닝
         - True Coder ContactForm 듀토리얼 따라하기(완료)
             - 실행화면
+         
+
+            https://github.com/YooWangGwon/basic-aspnet-2024/assets/158007390/eca2fe84-1108-4d6c-ae4d-c0699d73c2dd
+
 
         - True Coder 3d Parallax Website 
             - GSAP : https://gsap.com/docs/v3/Installation?tab=cdn&module=esm&method=private+registry&tier=free&club=false&require=false&trial=true
@@ -532,7 +533,9 @@
             Done
             ```
         8. Controllers 폴더에 컨트롤러 추가
+           
         <img src="https://raw.githubusercontent.com/YooWangGwon/basic-aspnet-2024/main/images/asp008.png" width="600">
+        
         9. 실행(Ctrl+F5)
 
 ## 9일차(24.07.22)
