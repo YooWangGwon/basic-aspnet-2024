@@ -442,9 +442,7 @@
         - True Coder ContactForm 듀토리얼 따라하기(완료)
             - 실행화면
          
-
             https://github.com/YooWangGwon/basic-aspnet-2024/assets/158007390/eca2fe84-1108-4d6c-ae4d-c0699d73c2dd
-
 
         - True Coder 3d Parallax Website 
             - GSAP : https://gsap.com/docs/v3/Installation?tab=cdn&module=esm&method=private+registry&tier=free&club=false&require=false&trial=true
@@ -517,13 +515,13 @@
         - Microsoft.EntityFrameworkCore.SqlServer
 
     - Code first 구현순서
-        1. ASP.NET 프로젝트 생성
-        2. EF 패키지 3개 설치
-        3. 엔티티 클래스 작성
-        4. appsettings.json에 DB 연결 문자열 추가
-        5. Data/ApplicationDbContext.cs 중간연결 클래스 생성
-        6. Program.cs Services 내에 DbContext 종석성을 주입
-        7. Nuget 패키지 관리자 > 패키지 관리자 콘솔 실행
+        - ASP.NET 프로젝트 생성
+        - EF 패키지 3개 설치
+        - 엔티티 클래스 작성
+        - appsettings.json에 DB 연결 문자열 추가
+        - Data/ApplicationDbContext.cs 중간연결 클래스 생성
+        - Program.cs Services 내에 DbContext 종석성을 주입
+        - Nuget 패키지 관리자 > 패키지 관리자 콘솔 실행
             ```shell
             PM> add-migration '마이그레이션 명'
             Build started...
@@ -533,11 +531,11 @@
             ...
             Done
             ```
-        8. Controllers 폴더에 컨트롤러 추가
+        - Controllers 폴더에 컨트롤러 추가
            
         <img src="https://raw.githubusercontent.com/YooWangGwon/basic-aspnet-2024/main/images/asp008.png" width="600">
         
-        9. 실행(Ctrl+F5)
+        - 실행(Ctrl+F5)
 
 ## 9일차(24.07.22)
 - ASP.NET Core MVC

@@ -1,4 +1,5 @@
 let parallax_el = document.querySelectorAll(".parallax");
+let main = document.querySelector("main")
 
 let xValue = 0, 
     yValue = 0;
@@ -25,6 +26,7 @@ function update(cursorPosition){
 update(0)
 
 window.addEventListener("mousemove", (e)=> {
+    if(timeline.isActive()) return;
 
     xValue = e.clientX - window.innerWidth / 2; // 정중앙 대비 수평위치
     yValue = e.clientY - window.innerHeight / 2;    // 정중앙 대비 수직위치
@@ -33,6 +35,12 @@ window.addEventListener("mousemove", (e)=> {
 
     update(e.clientX);    
 })
+
+if(window.innerWidth >= 725) {
+    main.style.maxHeight = `${window.innerWidth * 0.6}px`;
+} else {
+    main.style.maxHeight = `${window.innerWidth * 1.6}px`
+}
 
 /* GSAP Animation */
 
@@ -63,10 +71,17 @@ timeline.from(".text h1",
     duration: 2,
     },
     "2.5"   // 2.5 - 1 = 1.5
-    ).from(".text h2", {
-    y: -150,
-    opacity: 0,
-    duration: 1.5,
-    },
-    "3"
-);
+    ).from(".text h2", 
+        {
+        y: -150,
+        opacity: 0,
+        duration: 1.5,
+        },
+        "3"
+    )
+    .from(".hide", 
+        {
+        opacity: 0,
+        duration: 1.5,     
+        }, 
+        "3");
