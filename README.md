@@ -431,7 +431,8 @@
             https://github.com/YooWangGwon/basic-aspnet-2024/assets/158007390/54509945-1e31-4528-92a5-15fac9454df4
 
         - Parallax Webpage 듀토리얼 따라하기(완료)
-            - 실행화면
+              
+        https://github.com/YooWangGwon/basic-aspnet-2024/assets/158007390/a05bc8c6-013e-4966-af97-fa92f649b654
 
         - ContactForm 듀토리얼 따라하기(진행중)
 
