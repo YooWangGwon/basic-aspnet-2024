@@ -26,7 +26,7 @@
     6. C- Cgi, fastCGI ...
     7. PHP
 
-- 개발
+- 웹 개발
     - 프론트엔드 전부 + 백엔드 여러개 중 하나 + DB
     - 웹 브라우저에서 F12 (개발자도구)
     - Visual Studio Code에 플러그인 설치
@@ -452,10 +452,16 @@
 
 ## 8일차(24.06.10)
 - ASP.NET
+    - 웹퍼블리시 : HTML, CSS, JavaScript만 가지고 웹페이지만 개발(디자인)
+    - 프론트엔드 개발자 - 웹 퍼블리시가 만든 웹 페이지에 백엔드와 연계를 해서 실제 동작하는 페이지 개발(개발자)
+        - json, 백엔드, DB에 대한 전반적인 지식 필요
+        
     - ASP.NET의 역사
         - 1990년대 MS가 웹 서버기술로 ASP(Active Server Page)를 배포. like JSP(Java Server Page)
         - ASP는 .NET으로 된 언어가 아닌, VSB(Visual Basic)Script를 사용(파일 확장자명:.asp)
-        - 스파게티 코드 -> HTML + CSS + JavaScript + VBScript를 섞어 만든 웹 페이지
+        - 스파게티 코드 -> HTML + CSS + JavaScript + VBScript를 섞어 만든 웹 페이지 
+            - 프론트엔드 + 백엔드 소스가 한군데에 같이 있음
+            - 다만, 현재 프론트엔드도 백엔드 소스가 일부는 포함디ㅓ
         - 많이 사용되었지만 유지보수가 어렵고, 성능이 좋지 않음
 
         - 2000년대 MS가 .NET Framework 발표.
@@ -464,20 +470,20 @@
         - winform을 개발하는 것 처럼 웹 개발 가능(ASP.NET Webforms, 가장 큰 장점!!)
         - 2009년 ASP.NET MVC(Model View Controller 디자인패턴) 공표, 성능은 좋아짐.
         - 하지만, 위도우에서만 동작
-
         - 2016년 모든 OS 플랫폼에서 동작할 수 있는 .NET Core를 재출시 
         - 웹서버 기술을 또 다시 만듦(ASP.NET Core)
+        - ASP.NET은 C#이 아닌 다른 .NET 언어로도 개발 가능
 
     - .NET Core(현재는 .NET 9.0, Core라는 이름은 사용안함)의 장점
         - 빠르고 오픈소스
-        - 크로스 플랫폼, OS에 종속받지 않음
+        - **크로스 플랫폼**, OS에 종속받지 않음
         - 성능!
 
     - ASP.NET Core 종류
         - ASP.NET Webforms - 2000년도 초반에 나오다가 사장된 웹사이트 개발 기술
         - JS(Vue, Angular, React) 프론트엔드 + ASP.NET Core로 서버를 백엔드
-        - **ASP.NET Core 웹 API - 데이터포털, 네이버, 카카오, 영화 API 사이트를 만드는 백엔드(프론트엔드가 없어서 화면이 없음)**
         - **ASP.NET Core 웹앱(MVC) - 가장 기본적인 프론트엔드(HTML,CSS,JS .html) + 백엔드(C#, .aspx.cs) 웹사이트 개발**
+        - **ASP.NET Core 웹 API - 데이터포털, 네이버, 카카오, 영화 API 사이트를 만드는 백엔드(프론트엔드가 없어서 화면이 없음)**
         - ~~Edge용 웹 드라이버 테스트 - Edge 브라우저에 종속된 테스트용~~
         - ASP.NET Core gRPC 서비스 - 고성능 원격프로시져 호출(스트리밍 호출) 서비스
         - Blazor - Js 프론트엔드를 따라서 C# 컴포넌트 기반으로 개발하는 웹개발 방식 웹사이트 개발
@@ -538,9 +544,59 @@
         
         - 실행(Ctrl+F5)
 
-## 9일차(24.07.22)
+        - 브라우저 실행 시 NET::ERR_CERT_INVALID 연결 비공개 설정이 안되 화면이 나타나지 않는 경우
+            - 브라우저 화면 클릭, thisisunsafe를 입력하고 클릭
+
+## 9일차(24.07.16)
 - ASP.NET Core MVC
-    - 필요 이론
-    - 연습
-    - 개인 포트폴리오 웹사이트
-    - BootStrap 테마 적용
+    - MVC 복습
+        - Model은 개발자가 따로 만듦
+        - View, Controller 폴더는 미리 만들어짐
+        - 웹 브라우저에서 접근할 페이지를 만들려면(작업 순서)
+            1. 해당 컨트롤러 생성
+            2. 뷰를 같이 생성할지 나중에 따로 만들지 선택
+            3. 컨트롤러 이름과 동일한 뷰 폴더, 메서드 이름과 동일한 cshtml 페이지가 생성
+            3. 컨트롤러에 모델에 DB와 연결될 내용을 작성
+            4. 모델 내용을 뷰로 리턴
+
+- ASP.NET Core 웹사이트 만들기, MyPortfolio
+    1. Visual Studio에서 ASP.NET Core 웹앱(MVC)
+    2. BootStrap 탬플릿 사이트에서 알맞은 템플릿을 다운로드
+        - 사이트
+            <a href="https://startbootstrap.com/themes#google_vignette"><b>Start Bootstrap</b></a>
+            <a href="https://themewagon.com/"><b>Theme Wagon</b></a>
+        - <a href="https://startbootstrap.com/theme/personal"><b>사용한 템플릿</b></a>
+    3. wwwroot 폴더 밑에 템플릿 html, css, js, 이미지 등 위치하기
+    4. 템플릿 페이지에 공통적인 부분(Header, Bottom)은 _layout.cshtml에 위치
+    5. 중간에 페이지마다 변경되는 부분은 각 Views 밑에 포함
+    6. _layout.html에 공통부분 영역 옮기기
+    7. index.cshtml에 index.html에서 공통부분 외 영역 옮기기
+    8. index.cshtml 내용 수정
+    9. ResumeController.cs 생성, DB 관련된 설정이 없으면 모델, 뷰를 만들기 어려움
+    10. Resume 란 폴더가 Views 아래에 만듦. Index.cshtml
+    11. Resume.html에 있는 Navigation 아래 Footer 위의 변경 부분만 복사해서 Index.cshtml에 붙여넣기
+    12. 9번~11번의 내용을 Project, Contact도 동일하게 적용
+    13. Code First 방식으로 Board 테이블 생성
+    14. Nuget 패키지에서 Microsoft.EntityFrameworkCore 패키지 검색, 설치
+    15. Microsoft.EntityFrameworkCore.Tools 패키지 검색, 설치
+    16. Microsoft.EntityFrameworkCore.SqlServer 패키지 검색, 설치
+    17. model/Board.cs 로 엔티티 클래스 생성
+    18. appsettings.json에 DB 연결 문자열 추가
+    19. Data/AppDbContext.cs 생성
+    20. Program.cs에 DbContext 종속성을 주입
+    21. Nuget 패키지 관리자 콘솔 > Add-Migration > UpdateDatabase 진행
+    22. _layout.cshtml Board 링크 수정
+    23. /Controller/BoardController.cs를 생성(모델, 뷰 연결)
+        - Entity Framework가 사용하며 뷰가 포함된 MVC 컨트롤러
+
+        <img src="https://raw.githubusercontent.com/YooWangGwon/basic-aspnet-2024/main/images/asp008.png" width="500">
+
+
+## 10일차
+- ASP.NET Core 웹사이트 만들기, MyPortfolio
+    1. board.cs의 멤버 속성 Mode -> ModDate
+    2. 테이블 삭제, 재생성
+    3. 게시판 관련된 화면 수정작업
+    4. 페이징!!
+    5. 회원가입, 로그인...
+    6. 관리자 모드/페이지
