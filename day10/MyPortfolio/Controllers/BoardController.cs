@@ -22,6 +22,10 @@ namespace MyPortfolio.Controllers
         // GET: Board
         public async Task<IActionResult> Index()
         {
+            // AddDbContext(DB 핸들링 객체) 안의 Board DBSet객체에다가
+            // 들어있는 데이터를 리스트로 가져와서
+            // 화면으로 보낸 다음에 출력하라
+            // Views/Board/Index.cshtml을 화면에 뿌려라
             return View(await _context.Board.ToListAsync());
         }
 
@@ -44,8 +48,10 @@ namespace MyPortfolio.Controllers
         }
 
         // GET: Board/Create
+        // 링크를 클릭해서 화면이 전환됨
         public IActionResult Create()
         {
+            // Views/Board/Create.cshtml 화면을 출력하라
             return View();
         }
 
@@ -53,14 +59,19 @@ namespace MyPortfolio.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
+
+        // 기본값은 [HttpGet]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,UserId,Title,Contents,Hit,RegDate,Modedate")] Board board)
+        public async Task<IActionResult> Create([Bind("Id,Name,UserId,Title,Contents,Hit,RegDate,ModDate")] Board board)
         {
+            // 아무 값도 입력하지 않으면 ModelState.IsValid는 false이다.
             if (ModelState.IsValid)
             {
-                _context.Add(board);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                board.RegDate = DateTime.Now;
+                board.ModDate = null;
+                _context.Add(board);    // 여기까지는 ASP.NET의 DB 객체에까지만 저장
+                await _context.SaveChangesAsync();  // MSSQL의 DB에 Insert 후 Commit 실행
+                return RedirectToAction(nameof(Index)); // 저장 후 게시판 목록 화면으로 돌아감
             }
             return View(board);
         }
@@ -73,12 +84,12 @@ namespace MyPortfolio.Controllers
                 return NotFound();
             }
 
-            var board = await _context.Board.FindAsync(id);
+            var board = await _context.Board.FindAsync(id); // SELECT * FROM WHERE Id = @id
             if (board == null)
             {
                 return NotFound();
             }
-            return View(board);
+            return View(board); // Edit.cshtml을 출력
         }
 
         // POST: Board/Edit/5
@@ -86,7 +97,7 @@ namespace MyPortfolio.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,UserId,Title,Contents,Hit,RegDate,Modedate")] Board board)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,UserId,Title,Contents,Hit,RegDate,ModDate")] Board board)
         {
             if (id != board.Id)
             {
@@ -97,7 +108,10 @@ namespace MyPortfolio.Controllers
             {
                 try
                 {
-                    _context.Update(board);
+                    // 수정 날짜를 추가
+                    board.ModDate = DateTime.Now;   // 현재 수정하는 날짜와 시간을 입력
+                    _context.Update(board); // 수정
+                    // DB Upadte and Commit
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
@@ -145,6 +159,7 @@ namespace MyPortfolio.Controllers
                 _context.Board.Remove(board);
             }
 
+            // DB Delete 후에 Commit
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
