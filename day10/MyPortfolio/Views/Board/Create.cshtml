@@ -34,7 +34,8 @@
                     </div>
                     <div class="form-group">
                         <label asp-for="Contents" class="control-label"></label>
-                        <input asp-for="Contents" class="form-control" />
+                        <!-- textarea는 여는 태그와 닫는 태그 모두 사용해야함 -->
+                        <textarea asp-for="Contents" class="form-control" rows="10"></textarea>
                         <span asp-validation-for="Contents" class="text-danger"></span>
                     </div>
                     <div class="form-group pt-3">
@@ -52,3 +53,8 @@
     </div>
 </section>
 
+@section Scripts {
+    <script>
+        var simplemde = new SimpleMDE({ element: document.getElementById("Contents") });
+    </script>
+}

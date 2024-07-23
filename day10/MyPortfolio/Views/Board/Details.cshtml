@@ -1,4 +1,5 @@
-﻿@model MyPortfolio.Models.Board
+﻿@using Westwind.AspNetCore.Markdown
+@model MyPortfolio.Models.Board
 
 @{
     ViewData["Title"] = "Board";
@@ -10,7 +11,7 @@
             <div class="row">
                 <div class = "col text-center">
                     <h3>
-                       @Html.DisplayNameFor(model => model.Title)
+                       @Html.DisplayFor(model => model.Title)
                     </h3>
                 </div>
             </div>
@@ -33,7 +34,13 @@
             </div>
             <div class="row px-2">
                 <div class="col" style="min-height:200px">
-                    @Html.DisplayFor(model => model.Contents)
+                    @* @Html.DisplayFor(model => model.Contents) *@
+                    @Markdown.ParseHtmlString(Model.Contents)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <hr />
                 </div>
             </div>
         </div>
@@ -42,10 +49,10 @@
                 <i class="bi bi-check-square-fill"></i>
                 글 수정
             </a>
-            <a asp-controller="Board" asp-action="Delete" asp-route-id="@Model?.Id" class="btn btn-danger">
-                <i class="bi bi-file-earmark-x-fill"></i>
-                글 삭제
-            </a>
+             <a asp-controller="Board" asp-action="Delete" asp-route-id="@Model?.Id" class="btn btn-danger">
+                    <i class="bi bi-file-earmark-x-fill"></i>
+                    글 삭제
+                </a>
             <a asp-controller="Board" asp-action="Index" class="btn btn-success">
                 <i class="bi bi-list-ul"></i>
                 목록
@@ -53,3 +60,25 @@
         </div>
     </div>
 </section>
+
+@section Scripts{
+    <script>
+        // 삭제 여부 함수
+        function confirmDelete(id){
+            var result = confirm("삭제하시겠습니까?");// 1(true) : 0(false)
+
+            if (result) {
+                // alert(id);
+                // 삭제 POST를 실행
+                $.ajax({
+                    // url: 'https//localhost:7291/Board/Delete/' + id를 이렇게 쓰는 것은 구식방식(ip나 port번호가 변경될 때 마다 변경해야함)
+                    url: '@Url.Action("Delete")/' + id,
+                    type: 'POST'    // POST 액션 메서드
+                    success: function(data) {
+                        window.location.href = @Url.Action("Index");    // 문자열로 변경(중요!)
+                    }
+                });
+            }
+        }
+    </script>
+}

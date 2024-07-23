@@ -589,10 +589,10 @@
     23. /Controller/BoardController.cs를 생성(모델, 뷰 연결)
         - Entity Framework가 사용하며 뷰가 포함된 MVC 컨트롤러
 
-        <img src="https://raw.githubusercontent.com/YooWangGwon/basic-aspnet-2024/main/images/asp008.png" width="500">
+        <img src="https://raw.githubusercontent.com/YooWangGwon/basic-aspnet-2024/main/images/asp009.png" width="500">
 
 
-## 10일차
+## 10일차(24.07.18)
 - ASP.NET Core 웹사이트 만들기, MyPortfolio
     1. board.cs의 멤버 속성 Mode -> ModDate
         - BoardController.cs에서 ModeDate -> ModDate 변경
@@ -618,8 +618,57 @@
         5. Models/Board.cs에서 ModeDate의 DateTime에서 DateTime?으로 변경(Null 허용)
         6. Edit 동일, Create.cshtml 내용을 그대로 복사/붙여넣기 단, asp-action="Edit"으로 변경!
 
-## 11일차
+## 11일차(24.07.23)
 - ASP.NET Core 웹사이트 만들기, MyPortfolio
-    7. 페이징!!
-    8. 회원가입, 로그인...
-    9. 관리자 모드/페이지
+    0. EntitiyFramework로 SQL 사용없이(별도의 쿼리문 작성 없이) DB 핸들링
+        - DBContext.ADD(삽입), Update(수정), Remove(삭제) 기능 존재
+        - 위의 명령을 수행한 후 DbContext.SaveChangesAsync()를 실행해서 실제 DB에 반영
+        - ToListAsync(), FirstOrDefaultAsync()는 SELECT로 트랜잭션이 발생X. 그래서 SaveChangesAync()를 실행하지 않음
+    1. 글 조회수 올리기
+    2. 게시글 삭제
+        - _layout.cshtml의 @await RenderSectionAsync("Script", required:false) 이 각 페이지에 필요시 스크립트영역을 만들어 써라는 의미
+        - AJAX 삭제는 나중에 다시
+    3. 페이징(1페이지, 2페이지 ...)
+        - 웹사이트에서 가장 중요한 기능 중 하나
+        - 한 페이지에 표시할 수 있는 글의 수를 제한
+        - 스크롤 페이징, 번호 페이징
+        - 번호 페이징
+            1. BoardController.cs Index() 액션메서드 내 FromSql()로 변경(비동기 적용 안됨, 비동기 부분 제거)
+            2. 페이징용 쿼리 작성
+                ```sql
+                SELECT *
+                  FROM (
+                        SELECT ROW_NUMBER() OVER(ORDER BY ID DESC) AS rowNum 
+                            ,Id
+                            ,Name
+                            ,UserId
+                            ,Title
+                            ,Contents
+                            ,Hit
+                            ,RegDate
+                            ,ModDate
+                        FROM Board
+                        ) AS base
+                 WHERE base.rowNum BETWEEN 1 AND 10;    -- 1과 10에 10씩 더하면 다음 페이지를 조회
+                ```
+            3. Index() 내 로직 수정
+            4. Views/Board/Index.cshtml 화면 코드 수정
+    4. 검색
+        - FromSql()에서 FromSqlRaw()로 메서드를 변경
+        - html링크에 ?page=1&search='검색어' 추가 
+    5. HTML 에디터
+        - Markdown 에디터
+        - simplemde(https://simplemde.com)
+        - _layout.cshtml에 js, css 링크만 추가
+        - 실제 사용페이지에서 특정 js만 실행
+        - Create.cshtml, Edit.cshtml을 동일하게 작업
+        - Nuget 패키지 Westwind.AspNetCore.Markdown 검색 및 설치
+
+        <img src="https://raw.githubusercontent.com/YooWangGwon/basic-aspnet-2024/main/images/asp010.png" width="500">
+
+
+## 12일차
+- ASP.NET Core 포트폴리오 웹사이트, MyPortfolio
+    0. 삭제 로직 수정
+    1. 회원가입, 로그인
+    2. 관리자 모드/페이지

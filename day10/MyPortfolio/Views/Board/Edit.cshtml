@@ -33,7 +33,7 @@
                     </div>
                     <div class="form-group">
                         <label asp-for="Contents" class="control-label"></label>
-                        <input asp-for="Contents" class="form-control" />
+                        <textarea asp-for="Contents" class="form-control"></textarea>
                         <span asp-validation-for="Contents" class="text-danger"></span>
                         <!--화면에는 나오지 않지만 값은 보유하고 있는 상태-->
                     </div>
@@ -53,3 +53,9 @@
 
     </div>
 </section>
+
+@section Scripts {
+    <script>
+        var simplemde = new SimpleMDE({ element: document.getElementById("Contents") });
+    </script>
+}
