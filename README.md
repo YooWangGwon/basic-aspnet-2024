@@ -620,15 +620,15 @@
 
 ## 11일차(24.07.23)
 - ASP.NET Core 웹사이트 만들기, MyPortfolio
-    0. EntitiyFramework로 SQL 사용없이(별도의 쿼리문 작성 없이) DB 핸들링
+    1. EntitiyFramework로 SQL 사용없이(별도의 쿼리문 작성 없이) DB 핸들링
         - DBContext.ADD(삽입), Update(수정), Remove(삭제) 기능 존재
         - 위의 명령을 수행한 후 DbContext.SaveChangesAsync()를 실행해서 실제 DB에 반영
         - ToListAsync(), FirstOrDefaultAsync()는 SELECT로 트랜잭션이 발생X. 그래서 SaveChangesAync()를 실행하지 않음
-    1. 글 조회수 올리기
-    2. 게시글 삭제
+    2. 글 조회수 올리기
+    3. 게시글 삭제
         - _layout.cshtml의 @await RenderSectionAsync("Script", required:false) 이 각 페이지에 필요시 스크립트영역을 만들어 써라는 의미
         - AJAX 삭제는 나중에 다시
-    3. 페이징(1페이지, 2페이지 ...)
+    4. 페이징(1페이지, 2페이지 ...)
         - 웹사이트에서 가장 중요한 기능 중 하나
         - 한 페이지에 표시할 수 있는 글의 수를 제한
         - 스크롤 페이징, 번호 페이징
@@ -653,10 +653,10 @@
                 ```
             3. Index() 내 로직 수정
             4. Views/Board/Index.cshtml 화면 코드 수정
-    4. 검색
+    5. 검색
         - FromSql()에서 FromSqlRaw()로 메서드를 변경
         - html링크에 ?page=1&search='검색어' 추가 
-    5. HTML 에디터
+    6. HTML 에디터
         - Markdown 에디터
         - simplemde(https://simplemde.com)
         - _layout.cshtml에 js, css 링크만 추가
@@ -669,6 +669,6 @@
 
 ## 12일차
 - ASP.NET Core 포트폴리오 웹사이트, MyPortfolio
-    0. 삭제 로직 수정
-    1. 회원가입, 로그인
-    2. 관리자 모드/페이지
+    1. 삭제 로직 수정
+    2. 회원가입, 로그인
+    3. 관리자 모드/페이지
