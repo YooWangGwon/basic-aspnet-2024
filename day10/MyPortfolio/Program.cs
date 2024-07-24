@@ -18,6 +18,12 @@ namespace MyPortfolio
                 builder.Configuration.GetConnectionString("MyConnection")
                 ));
 
+            // 로그인 세션 설정
+            builder.Services.AddSession(options => {
+                options.Cookie.Name = "ASPNETPortfolioSession"; // 웹앱 세션 쿠키이름
+                options.IdleTimeout = TimeSpan.FromMinutes(20); // 세션 지속시간
+            }).AddControllersWithViews();
+
             // MarkDown 관련 설정
             builder.Services.AddMarkdown();
             builder.Services.AddMvc().AddApplicationPart(typeof(MarkdownPageProcessorMiddleware).Assembly);

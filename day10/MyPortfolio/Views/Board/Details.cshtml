@@ -49,10 +49,12 @@
                 <i class="bi bi-check-square-fill"></i>
                 글 수정
             </a>
-             <a asp-controller="Board" asp-action="Delete" asp-route-id="@Model?.Id" class="btn btn-danger">
+@*              <a asp-controller="Board" asp-action="Delete" asp-route-id="@Model?.Id" class="btn btn-danger">
                     <i class="bi bi-file-earmark-x-fill"></i>
                     글 삭제
-                </a>
+                </a> *@
+            @* <a class="btn btn-danger" id="btnDelete">글 삭제</a> *@
+            <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#delModal">글삭제</button>
             <a asp-controller="Board" asp-action="Index" class="btn btn-success">
                 <i class="bi bi-list-ul"></i>
                 목록
@@ -61,24 +63,73 @@
     </div>
 </section>
 
-@section Scripts{
-    <script>
-        // 삭제 여부 함수
-        function confirmDelete(id){
-            var result = confirm("삭제하시겠습니까?");// 1(true) : 0(false)
 
-            if (result) {
-                // alert(id);
-                // 삭제 POST를 실행
+@section Scripts{
+    <!-- Modal -->
+    <div class="modal fade" id="delModal" tabindex="-1" aria-labelledby="delModalLabel aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">삭제 확인</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    삭제하시겠습니까?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="btnDirectDelete">예</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">아니요</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        $(document).ready(() => { 
+            // html 화면이 다랜더링 되고 나면 설정들을 하겠다
+            $('#btnDelete').click(() => {
+                var id = @Model?.Id;
+                if(confirm("삭제하시겠습니까?")){
+                    // alert(id + '삭제하겠습니다.')
+                    $.ajax({
+                        url: '/api/BoardRest/' + id,
+                        type: 'DELETE',
+                        dataType: 'text',
+                        success: (data) => {
+                            window.location.href = '@Url.Action("Index")';
+                        }
+                    });
+                }
+            });
+
+            $('#btnDirectDelete').click(() => {
+                var id = @Model?.Id;
                 $.ajax({
-                    // url: 'https//localhost:7291/Board/Delete/' + id를 이렇게 쓰는 것은 구식방식(ip나 port번호가 변경될 때 마다 변경해야함)
-                    url: '@Url.Action("Delete")/' + id,
-                    type: 'POST'    // POST 액션 메서드
-                    success: function(data) {
-                        window.location.href = @Url.Action("Index");    // 문자열로 변경(중요!)
+                    url: '/api/BoardRest/' + id,
+                    type: 'DELETE',
+                    dataType: 'text',
+                    success: (data) => {
+                        window.location.href = '@Url.Action("Index")';
                     }
                 });
-            }
-        }
+            });
+        });
+
+        // // 삭제 여부 함수
+        // function confirmDelete(id){
+        //     var result = confirm("삭제하시겠습니까?");// 1(true) : 0(false)
+
+        //     if (result) {
+        //         // alert(id);
+        //         // 삭제 POST를 실행
+        //         $.ajax({
+        //             // url: 'https//localhost:7291/Board/Delete/' + id를 이렇게 쓰는 것은 구식방식(ip나 port번호가 변경될 때 마다 변경해야함)
+        //             url: '@Url.Action("Delete")/' + id,
+        //             type: 'POST'    // POST 액션 메서드
+        //             success: function(data) {
+        //                 window.location.href = @Url.Action("Index");    // 문자열로 변경(중요!)
+        //             }
+        //         });
+        //     }
+        // }
     </script>
 }
