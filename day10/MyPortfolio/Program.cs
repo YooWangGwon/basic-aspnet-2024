@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using MyPortfolio.Data;
-using Westwind.AspNetCore.Markdown;
+using Westwind.AspNetCore.Markdown; // 마크다운 패키지 추가
 
 namespace MyPortfolio
 {
@@ -12,7 +12,6 @@ namespace MyPortfolio
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
-
             // DbContext 종속성 주입
             builder.Services.AddDbContext<AppDbContext>(option => option.UseSqlServer(
                 builder.Configuration.GetConnectionString("MyConnection")
@@ -21,8 +20,8 @@ namespace MyPortfolio
             // 로그인 세션 설정
             builder.Services.AddSession(options => {
                 options.Cookie.Name = "ASPNETPortfolioSession"; // 웹앱 세션 쿠키이름
-                options.IdleTimeout = TimeSpan.FromMinutes(20); // 세션 지속시간
-            }).AddControllersWithViews();
+                options.IdleTimeout = TimeSpan.FromMinutes(20); // 세션 지속시간 20~30분이 적당
+            }).AddControllersWithViews(); // 세션의 내용을 cshtml에도 적용한다
 
             // MarkDown 관련 설정
             builder.Services.AddMarkdown();
@@ -38,18 +37,18 @@ namespace MyPortfolio
                 app.UseHsts();
             }
 
-            app.UseMarkdown(); // Markdown 사용 설정
+            app.UseMarkdown(); // 마크다운 사용설정
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
             app.UseRouting();
-
+            app.UseSession(); // 세션사용!
             app.UseAuthorization();
 
             app.MapControllerRoute(
                 name: "default",
                 pattern: "{controller=Home}/{action=Index}/{id?}");
-                // URL 패턴 : https://localhost:port/controller_이름/action_이름/{id}
+            // URL패턴 : https://localhost:port/controller이름/action이름/[id](옵션)
 
             app.Run();
         }

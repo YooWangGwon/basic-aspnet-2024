@@ -18,6 +18,8 @@ namespace MyPortfolio.Models
         [Required]
         public string Password { get; set; }
 
+        //[Required(ErrorMessage = "비밀번호가 일치하지 않습니다.")]
+        // Nullable인데 Required는 말이 안됨. 로그인 할 때 문제를 발생
         public string? PasswordCheck { get; set; }
 
         [MaxLength(15)]
@@ -29,6 +31,6 @@ namespace MyPortfolio.Models
         public DateTime? RegDate { get; set; }
 
         // RelationShip User부모 -> Board자식
-        public virtual ICollection<Board> Boards { get; set; }
+        public virtual ICollection<Board>? Boards { get; set; }
     }
 }

@@ -691,6 +691,12 @@
 
 ## 13일차
 - ASP.NET Core 포트폴리오 웹사이트, MyPortfolio
+    1. 회원가입 계속...
+        1. Register.cshtml에 asp-for등 C# Razor tag로 변경
+        2. HomeController.cs Register Post 메서드 작성
+        3. Login.cshtml에 C# Razor tag로 변경
+        4. HomeController.cs Login Post 메서드 작성
+        5. 
     1. 이력서, 프로젝트
     2. 관리자모드/페이지
     3. 자신 컴퓨터 IIS 서버에 웹사이트 올리기

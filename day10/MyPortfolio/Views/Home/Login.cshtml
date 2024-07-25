@@ -7,11 +7,9 @@
 <link rel="stylesheet" href="~/css/sign-in.css"/>
 
 <main class="form-signin w-100 m-auto">
-    <form>
+    <form asp-action="Login">
         <img class="mb-4" src="../assets/bootstrap-logo.svg" alt="" width="72" height="57">
         <h1 class="h3 mb-3 fw-normal">로그인</h1>
-
-        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
         <div class="form-floating">
             <input type="email" asp-for="UserEmail" class="form-control" id="usermail" placeholder="name@example.com" required>
