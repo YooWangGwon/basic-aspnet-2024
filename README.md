@@ -696,9 +696,12 @@
         2. HomeController.cs Register Post 메서드 작성
         3. Login.cshtml에 C# Razor tag로 변경
         4. HomeController.cs Login Post 메서드 작성
-        5. 
-    1. 이력서, 프로젝트
-    2. 관리자모드/페이지
-    3. 자신 컴퓨터 IIS 서버에 웹사이트 올리기
-    4. AWS 라이트세일로 웹사이트 공개하기
-    5. 부트스트랩 템플릿을 커스터마이징 하여 자신의 포트폴리오 사이트 만들기
+        5. Logout Get 메서드 추가
+
+        https://github.com/user-attachments/assets/184c2837-c813-472c-9d00-2e852eb641f0
+
+    2. 이력서, 프로젝트
+    3. 관리자모드/페이지
+    4. 자신 컴퓨터 IIS 서버에 웹사이트 올리기
+    5. AWS 라이트세일로 웹사이트 공개하기
+    6. 부트스트랩 템플릿을 커스터마이징 하여 자신의 포트폴리오 사이트 만들기
