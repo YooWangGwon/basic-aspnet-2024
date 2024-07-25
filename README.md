@@ -689,7 +689,7 @@
         12. HomeController.cs에 Register() 액션메서드 작성
         13. Register.cshtml 회원가입 페이지 생성
 
-## 13일차
+## 13일차(24.07.25)
 - ASP.NET Core 포트폴리오 웹사이트, MyPortfolio
     1. 회원가입 계속...
         1. Register.cshtml에 asp-for등 C# Razor tag로 변경
@@ -700,8 +700,25 @@
 
         https://github.com/user-attachments/assets/184c2837-c813-472c-9d00-2e852eb641f0
 
-    2. 이력서, 프로젝트
-    3. 관리자모드/페이지
-    4. 자신 컴퓨터 IIS 서버에 웹사이트 올리기
-    5. AWS 라이트세일로 웹사이트 공개하기
-    6. 부트스트랩 템플릿을 커스터마이징 하여 자신의 포트폴리오 사이트 만들기
+    2. 게시판 글 오류 수정
+        1. Board.cs에 있는 Name, UserID를 삭제, User?로 변경, UserName을 virtual 추가
+        2. BoardController.cs에 있는 Board 클래스와 관련된 변수도 삭제
+        3. Views/Board/*.cshtml Name, UserID를 삭제, 변경
+        4. BoardController.cs 게시글 리스트 쿼리 변경
+        5. Views/Board/*.cshtml 수정
+        6. BoardController.cs에 Create Post 메서드에 사용자데이터 추가 수정
+
+    3. 프로젝트 파일 업로드
+        1. Project.cs 모델 생성
+        2. AddDbContext.cs에 DbSet<Project> 추가
+        3. Add-Migration, Update-Database
+        4. ProjectController, View 생성
+        5. Vies/Project/Create.cshtml 수정
+        6. ProjectController
+
+## 14일차(24.07.26)
+- ASP.NET Core 포트폴리오 웹사이트, MyPortfolio
+    1. AWS 라이트세일로 웹사이트 공개하기
+    2. 자신 컴퓨터 IIS 서버에 웹사이트 올리기
+    3. 부트스트랩 템플릿을 커스터마이징 하여 자신의 포트폴리오 사이트 만들기
+    4. 관리자모드/페이지

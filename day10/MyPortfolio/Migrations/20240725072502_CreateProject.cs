@@ -6,11 +6,26 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace MyPortfolio.Migrations
 {
     /// <inheritdoc />
-    public partial class ClassToDb : Migration
+    public partial class CreateProject : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.CreateTable(
+                name: "Project",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ProjectName = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(400)", maxLength: 400, nullable: false),
+                    FilePath = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Project", x => x.Id);
+                });
+
             migrationBuilder.CreateTable(
                 name: "User",
                 columns: table => new
@@ -36,14 +51,13 @@ namespace MyPortfolio.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    UserId = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     Title = table.Column<string>(type: "nvarchar(250)", maxLength: 250, nullable: false),
                     Contents = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Hit = table.Column<int>(type: "int", nullable: true),
                     RegDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     ModDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    UserIdx = table.Column<int>(type: "int", nullable: false)
+                    UserIdx = table.Column<int>(type: "int", nullable: true),
+                    UserName = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -52,8 +66,7 @@ namespace MyPortfolio.Migrations
                         name: "FK_Board_User_UserIdx",
                         column: x => x.UserIdx,
                         principalTable: "User",
-                        principalColumn: "Idx",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Idx");
                 });
 
             migrationBuilder.CreateIndex(
@@ -67,6 +80,9 @@ namespace MyPortfolio.Migrations
         {
             migrationBuilder.DropTable(
                 name: "Board");
+
+            migrationBuilder.DropTable(
+                name: "Project");
 
             migrationBuilder.DropTable(
                 name: "User");

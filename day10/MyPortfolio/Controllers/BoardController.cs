@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.Data.SqlClient;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MyPortfolio.Data;
 using MyPortfolio.Models;
@@ -55,21 +49,25 @@ namespace MyPortfolio.Controllers
 
             //var StartCount = new SqlParameter("StartCount", startCount);
             //var EndCount = new SqlParameter("EndCount", endCount);
+            // 쿼리 수정 필수!!!!
             var list = _context.Board.FromSqlRaw<Board>(@$"SELECT *
                                                           FROM (
-                                                          SELECT ROW_NUMBER() OVER(ORDER BY ID DESC) AS rowNum 
-	                                                          ,Id
-                                                              ,Name
-                                                              ,UserId
-                                                              ,Title
-                                                              ,Contents
-                                                              ,Hit
-                                                              ,RegDate
-                                                              ,ModDate
-                                                          FROM Board
-                                                         WHERE Title LIKE '%{search}%'
-                                                          ) AS base
-                                                         WHERE base.rowNum BETWEEN {startCount} AND {endCount}").ToList();
+                                                                SELECT ROW_NUMBER() OVER(ORDER BY b.ID DESC) AS rowNum
+                                                                      ,b.Id
+                                                                      ,b.UserIdx
+                                                                      ,b.UserName AS UserName1
+                                                                      ,b.Title
+                                                                      ,b.Contents
+                                                                      ,b.Hit
+                                                                      ,b.RegDate
+                                                                      ,b.ModDate
+	                                                                  ,u.UserName
+                                                                  FROM Board AS b
+                                                                  LEFT JOIN [User] as u
+	                                                                ON b.UserIdx = u.Idx
+                                                                 WHERE b.Title LIKE '%{search}%'
+                                                                ) AS base
+                                                                WHERE base.rowNum BETWEEN {startCount} AND {endCount}").ToList();
 
 
             return View(list);
@@ -84,24 +82,41 @@ namespace MyPortfolio.Controllers
             }
 
             var board = await _context.Board
+                .Include(u => u.User!)  // Null로 관계가 형성된 부모/자식의 객체 값도 같이 포함시켜서 보여달라
                 .FirstOrDefaultAsync(m => m.Id == id);  // SELECT * FROM board WHERE ~
+
             if (board == null)
             {
                 return NotFound();
             }
             // 게시글 조회수를 1 증가
-
+            if (board.Hit == null) board.Hit = 0;
             board.Hit += 1;
             _context.Update(board); // 객체에 내용 반영
             await _context.SaveChangesAsync();  // 실제 DB를 반영
 
+            // 사용자 객체 가져오기
+            User curruser = await _context.User.FirstOrDefaultAsync(u => u.UserEmail == HttpContext.Session.GetString("USER_EMAIL"));
+            board.User = curruser; // 임시방편
+
             return View(board); // 게시글을 하나의 뷰로 던져줘!
         }
+
+
 
         // GET: Board/Create
         // 링크를 클릭해서 화면이 전환됨
         public IActionResult Create()
         {
+            if(HttpContext.Session.GetInt32("USER_LOGIN_KEY") == null)
+            {
+                // 로그인을 안했으니 로그인창으로 가라
+                return RedirectToAction("Login");
+            }
+
+            // 로그인한 사람의 이름이 담겨있는 쿠키를 사용
+            ViewData["USER_NAME"] = HttpContext.Session.GetString("USER_NAME");
+
             // Views/Board/Create.cshtml 화면을 출력하라
             return View();
         }
@@ -113,13 +128,23 @@ namespace MyPortfolio.Controllers
 
         // 기본값은 [HttpGet]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,UserId,Title,Contents,Hit,RegDate,ModDate")] Board board)
+        public async Task<IActionResult> Create([Bind("Id,Title,Contents,Hit,RegDate,ModDate")] Board board)
         {
             // 아무 값도 입력하지 않으면 ModelState.IsValid는 false이다.
             if (ModelState.IsValid)
             {
+                // 사용자 객체 가져오기
+                User curruser = await _context.User.FirstOrDefaultAsync(u=>u.UserEmail == HttpContext.Session.GetString("USER_EMAIL"));
+
+                if(curruser == null)
+                {
+                    return RedirectToAction("Index");
+                }
+
+                board.User = curruser;  // 현재 로그인한 사용자를 할당 
                 board.RegDate = DateTime.Now;
                 board.ModDate = null;
+                board.Hit = 0;
                 _context.Add(board);    // 여기까지는 ASP.NET의 DB 객체에까지만 저장
                 await _context.SaveChangesAsync();  // MSSQL의 DB에 Insert 후 Commit 실행
                 return RedirectToAction(nameof(Index)); // 저장 후 게시판 목록 화면으로 돌아감
@@ -130,6 +155,12 @@ namespace MyPortfolio.Controllers
         // GET: Board/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
+            if(HttpContext.Session.GetInt32("USER_LOGIN_KEY") == null)
+            {
+                return RedirectToAction("Login");
+            }
+            ViewData["USER_NAME"] = HttpContext.Session.GetString("USER_NAME");
+
             if (id == null)
             {
                 return NotFound();
@@ -148,7 +179,7 @@ namespace MyPortfolio.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,UserId,Title,Contents,Hit,RegDate,ModDate")] Board board)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Title,Contents,Hit,RegDate,ModDate")] Board board)
         {
             if (id != board.Id)
             {

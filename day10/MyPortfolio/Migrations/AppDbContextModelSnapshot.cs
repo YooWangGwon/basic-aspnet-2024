@@ -40,11 +40,6 @@ namespace MyPortfolio.Migrations
                     b.Property<DateTime?>("ModDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
                     b.Property<DateTime>("RegDate")
                         .HasColumnType("datetime2");
 
@@ -53,19 +48,44 @@ namespace MyPortfolio.Migrations
                         .HasMaxLength(250)
                         .HasColumnType("nvarchar(250)");
 
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<int>("UserIdx")
+                    b.Property<int?>("UserIdx")
                         .HasColumnType("int");
+
+                    b.Property<string>("UserName")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
                     b.HasIndex("UserIdx");
 
                     b.ToTable("Board");
+                });
+
+            modelBuilder.Entity("MyPortfolio.Models.Project", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasMaxLength(400)
+                        .HasColumnType("nvarchar(400)");
+
+                    b.Property<string>("FilePath")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ProjectName")
+                        .IsRequired()
+                        .HasMaxLength(30)
+                        .HasColumnType("nvarchar(30)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Project");
                 });
 
             modelBuilder.Entity("MyPortfolio.Models.User", b =>
@@ -113,9 +133,7 @@ namespace MyPortfolio.Migrations
                 {
                     b.HasOne("MyPortfolio.Models.User", "User")
                         .WithMany("Boards")
-                        .HasForeignKey("UserIdx")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("UserIdx");
 
                     b.Navigation("User");
                 });
