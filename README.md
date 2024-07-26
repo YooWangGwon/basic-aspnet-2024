@@ -718,7 +718,122 @@
 
 ## 14일차(24.07.26)
 - ASP.NET Core 포트폴리오 웹사이트, MyPortfolio
-    1. AWS 라이트세일로 웹사이트 공개하기
-    2. 자신 컴퓨터 IIS 서버에 웹사이트 올리기
-    3. 부트스트랩 템플릿을 커스터마이징 하여 자신의 포트폴리오 사이트 만들기
-    4. 관리자모드/페이지
+    1. AWS 라이트세일로 윈도우서버 인스턴스 만들기
+        1. 구글 AWS 라이트세일 검색
+        2. AWS 프리티어로 회원가입
+        3. AWS 라이트세일로 로그인
+        4. 루트 사용자로 로그인
+        5. 인스턴스 생성
+            - Linux/Unix는 라즈비안과 거의 동일
+            - MS Window OS 전용 > Windows Server 2016 선택
+            - 무료 중 가장 성능이 좋은거 선택
+            - 인스턴스 확인 이름 변경
+            - 인스턴스 생성 클릭
+        6. 인스턴스 관리
+            - 관리로 진입
+            - 퍼블릭 IPv4 주소는 매번 바뀔 수 있음
+            - 네트워킹 탭 > 고정 IP 연결 > 이름을 등록하고 생성 및 등록 > 고정 IP 주소가 생성
+            - 자신의 고정 IP
+            - Administrator에서 기본 암호 검색으로 비밀번호 확인
+        7. 원격 데스크톱 연결
+            - RDP를 사용하여 연결 or 원격 데스크톱 연결
+            - 원격 데스크톱 > 컴퓨터에 고정 IP 주소
+            - 이름은 Administrator, 암호는 기본암호에서 확인한 비밀번호 입력
+            - 컴퓨터로의 연결을 다시 묻지 않음을 체크하고 '예'클릭
+            - 서버 매니저 열기
+            - 로컬 서버 > IE Enhanced Security Config를 on에서 off로 변경
+            - 인터넷 익스플로러에서 구글 접속
+            - 크롬 브라우저 설치
+            - FileZilla Server 검색 및 설치
+
+        8. Filezilla 설정
+            - 메뉴 > Configure 클릭
+            - Server listener > 0.0.0 -> 내부 아이피로 변경
+            - FTP and FTP over TLS
+            - Generate New > Distinguish Name / HostName 입력, 새로 생성
+            - User 생성
+                - Mount point
+                    - Virtual path : /
+                    - Native path : 본인 지정
+                - Authentication : Required Password
+                - 패스워드 입력 후 Apply
+        
+        9. 윈도우 방화벽 설정
+            - Control Panel (제어판)
+            - Window Firewall > Advanced Setting
+            - Inbound : 21. 55000-55999 열기
+
+        10. AWS 방화벽 설정
+            - 네트워킹 IPv4 방화벽
+            - 21 포트 규칙 추가
+            - 55000-55999 포트 규칙 추가
+
+        11. 사용하는 PC에서 파일질라 클라이언트 설치
+            - 기본 설치
+             - 사이트 관리자
+             - 호스트 : AWS public IP
+             - 사용자, 비번 : Filezila server 설정한 사용자 계정
+             - 전송 설정 : 수동형
+             - 문자셋 : UTF-8로 강제 설정
+
+        12. Viual Studio ASP.NET Core 게시
+            - 프로젝터 > 마우스 오른쪽 클릭 > 게시 클릭
+            - FTP/FTPS 서버 선택 > 다음
+            - 서버 : aws public ip
+            - 사이트 경로 : /
+            - 수동 모드
+            - 사용자 이름, 패스워드 입력, 암호 저장
+            - 연결 유효성 검사 > 녹색 체크
+            - 게시
+
+        13. SQL Server 다운로드
+            - 윈도우 서버 패스워드 정책 변경
+                - 8문자 이상, 1문자 이상의 특수문자
+            - secpol.msc 보안 정책
+            - 패스워드 정책 변경 enabled -> disabled
+            - 설치 후 SQL Config Manager
+            - Network configuration
+                - TCP/IP enable
+            - 서버 재시작
+            - 윈도우 방화벽, ASW 방화벽 1433 포트 오픈
+            - SSMS 접속 확인
+
+        14. IIS(Internet Information Service)
+            - ASP, ASP.NET 종류 웹서버
+            - Server Manager 오픈
+            - Add Roles and Features 클릭
+            - 기본 선택 Next
+            - Select Server Roles
+
+        15. SQL Server 복제
+            - SSMS 로컬 DB를 접속
+            - 서버 종료
+            - EMS.mdf, EMS_log.ldf 복사
+            - FTP로 전송
+
+        16. IIS 서버에서 ASP.NET 실행
+            - 제어판 열기
+            - Administraion Tools
+            - IIS 실행
+            - Default Web Site > Basic Setting 사이트 경로 변경
+                - C:\Websites\MyPortfolio
+
+            - MyPortfolio의 폴더 설정
+                - Security 탭 >> Advanced >> Add >> Select a principal >> Advanced >> Find Now >> IIS_USERS 그룹 설정 추가
+
+            - 구글에서 ASP.NET 코어 런타임 8 검색 후 다운로드
+                - aspnetcore-runtime-8.0.7-win-x64.ex
+                - ASP.NET Core 8.0 Runtime (v8.0.7) - Windows Hosting Bundle Installer
+                - IIS 재시작
+
+        17. 다음부터는
+            - Visual Studio에서 개발
+            - Visual Studio에서 게시
+            - DB가 변경되었으면, mdf, ldf를  FTP로 업로드
+            - SQL 서버 중지 파일 이동
+
+## 14일차(24.07.30)
+- ASP.NET Core 포트폴리오 웹 사이트
+    1. 자신 컴퓨터 IIS 서버에 웹사이트 올리기
+    2. 부트스트랩 템플릿을 커스터마이징 하여 자신의 포트폴리오 사이트 만들기
+    3. 관리자모드/페이지
