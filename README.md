@@ -834,6 +834,71 @@
 
 ## 14일차(24.07.30)
 - ASP.NET Core 포트폴리오 웹 사이트
-    1. 자신 컴퓨터 IIS 서버에 웹사이트 올리기
-    2. 부트스트랩 템플릿을 커스터마이징 하여 자신의 포트폴리오 사이트 만들기
-    3. 관리자모드/페이지
+    1. 프로젝트 화면 DB 연동하기
+        - 지난 목요일 만들던 것 확인
+        - ProjectController.cs Create() Post 메서드 수정
+        - 업로드 확인
+        - Edit.cshtml은 Create().cshtml과 동일하게 수정
+        - Edit() Post 메서드 역시 동일 -> DB에 프로젝트 내용을 추가하는 부분
+        
+        - HomeController.cs Project() Get 메서드에 DB 연동 내용 추가
+        - Views/Home/Project.cshtml Db연동 내용 추가 -> 프로젝트에 DB 내용을 표시
+
+    2. 프로젝트 이미지 올리기
+        - 이미지 올리기 중간 모델(클래스) 하나 필요 - TempProject
+        - Project.cshtml 부트스트랜 클래스 수정
+
+    3. Contact 메일 보내기(네이버 연동)
+        - 구글, 네이버 동일 - 메일 계정 2단계 보안 설정
+        - 네이버 메일 환경설정 > POP3/SMTP 설정 사용함 변경
+        - 아래 코드를 해당 Post 액션 메서드 대입
+        ```cs
+            try
+            {
+                MailMessage mailMessage = new MailMessage();
+
+                mailMessage.From = new MailAddress("보내는 계정 주소", "표시 이름", System.Text.Encoding.UTF8);
+                // 받는이 메일 주소
+                mailMessage.To.Add("yyy@naver.com");
+                // 참조 메일 주소
+                mailMessage.CC.Add("zzz@naver.com");
+                // 비공개 참조 메일 주소
+                mailMessage.Bcc.Add("kkk@naver.com");
+                // 제목
+                mailMessage.Subject = "메일 제목";
+                // 메일 제목 인코딩 타입(UTF-8) 선택
+                mailMessage.SubjectEncoding = System.Text.Encoding.UTF8;
+                // 본문
+                mailMessage.Body = "메일 본문";
+                // 본문의 포맷에 따라 선택
+                mailMessage.IsBodyHtml = false;
+                // 본문 인코딩 타입(UTF-8) 선택
+                mailMessage.BodyEncoding = System.Text.Encoding.UTF8;
+                // 파일 첨부
+                mailMessage.Attachments.Add(new Attachment(new FileStream(@"D:\test.zip", FileMode.Open, FileAccess.Read), "test.zip"));
+                // SMTP 서버 주소
+                SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com");
+                // SMTP 포트
+                SmtpServer.Port = 587;
+                // SSL 사용 여부
+                SmtpServer.EnableSsl = true;
+                SmtpServer.UseDefaultCredentials = false;
+                SmtpServer.DeliveryMethod = System.Net.Mail.SmtpDeliveryMethod.Network;
+                SmtpServer.Credentials = new System.Net.NetworkCredential("아이디", "패스워드");
+
+                SmtpServer.Send(mailMessage);
+            }
+            catch (Exception ex)
+            {
+                // 에러메시지 HTML
+            }
+        ```
+
+    3. 부트스트랩 템플릿 커스터마이징
+        - 구글에서 부트스트랩 템플릿 검색
+            - https://bootstraptaste.com/
+            - https://startbootstrap.com/
+            - https://themewagon.com/themes/
+            - https://getbootstrap.com/docs/l5.0/examples
+
+        - 본인이 원하는 부트스트랩 탬플릿을 활용
